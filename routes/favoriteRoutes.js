@@ -1,4 +1,5 @@
 const express = require("express");
+// Importing controller functions to handle favorite products requests
 const { getFavorites,addToFavorites} = require("../controllers/favoriteController");
 const router = express.Router();
 
@@ -46,6 +47,11 @@ const router = express.Router();
  *                   name: "Smartphone"
  */
 
+// Define GET route to retrieve all favorite products
 router.get("/",getFavorites);
+
+// Define POST route to add a product to favorites
 router.post("/",addToFavorites);
+
+// Export the router for use in the main app
 module.exports = router;

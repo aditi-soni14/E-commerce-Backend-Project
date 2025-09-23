@@ -1,12 +1,21 @@
+// Importing the Product model
 const Product = require("../models/Product");
 
 // GET all products
 const getProducts = async (req, res) => {
   try {
+     // Fetch all products from the database
     const products = await Product.find();
+
+    
+    // Log the number of products found
     console.log("GET /api/products → Found:", products.length, "products");
+
+    
+    // Send the products as a JSON response
     res.json(products);
   } catch (err) {
+      // Log and send error if something goes wrong
     console.error("Error in getProducts:", err.message);
     res.status(500).json({ message: err.message });
   }
@@ -15,11 +24,19 @@ const getProducts = async (req, res) => {
 // GET products by category
 const getProductsByCategory = async (req, res) => {
   try {
+    // Extract category from route parameters
     const category = req.params.category;
+
+     // Find all products that match the given category
     const products = await Product.find({ category });
+
+     // Log the number of products found in the category
     console.log(`GET /api/products/${category} → Found:`, products.length, "products");
+
+    // Send the filtered products as a JSON response
     res.json(products);
   } catch (err) {
+     // Log and send error if something goes wrong
     console.error("Error in getProductsByCategory:", err.message);
     res.status(500).json({ message: err.message });
   }
@@ -28,6 +45,7 @@ const getProductsByCategory = async (req, res) => {
 // POST dummy products (seed)
 const addDummyProducts = async (req, res) => {
   try {
+     // Define an array of dummy products for seeding
     const dummyProducts = [
       { name: "Smartphone", category: "electronics", price: 20000, description: "Latest Android smartphone", image: "https://via.placeholder.com/150" },
       { name: "Laptop", category: "electronics", price: 55000, description: "Powerful laptop", image: "https://via.placeholder.com/150" },

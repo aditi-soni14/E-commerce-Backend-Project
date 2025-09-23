@@ -1,4 +1,5 @@
 const express = require("express");
+// Import controller functions to handle product-related requests
 const {getProducts, getProductsByCategory, addDummyProducts} = require("../controllers/productController")
 const router = express.Router();
 
@@ -17,6 +18,8 @@ const router = express.Router();
  *               count: 10
  */
 
+
+// Route to add dummy products to the database
 router.post("/seed" , addDummyProducts);
 
 /**
@@ -36,6 +39,8 @@ router.post("/seed" , addDummyProducts);
  *                 description: "Latest Android smartphone"
  *                 image: "https://via.placeholder.com/150"
  */
+
+// Route to get the list of all products
 router.get("/", getProducts);
 
 /**
@@ -63,4 +68,5 @@ router.get("/", getProducts);
 
 router.get("/:category" , getProductsByCategory);
 
+// Export the router object so it can be used in other parts of the application
 module.exports = router;

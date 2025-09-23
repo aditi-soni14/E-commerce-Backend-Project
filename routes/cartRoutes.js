@@ -1,5 +1,7 @@
 const express = require("express");
+// Importing controller functions to handle cart-related requests
 const { getCartItems, addToCart } = require("../controllers/cartController");
+
 const router = express.Router();
 
 /**
@@ -51,6 +53,11 @@ const router = express.Router();
  *                 quantity: 2
  */
 
+// Define GET route for fetching all cart items
 router.get("/", getCartItems);
+
+// Define POST route for adding a new product to the cart
 router.post("/", addToCart);
+
+// Export the router to be used in the main application
 module.exports = router;
