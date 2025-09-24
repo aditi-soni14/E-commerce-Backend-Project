@@ -1,5 +1,5 @@
-// Importing the Cart and Product models from the models directoryconst Cart = require("../models/Cart");
-const Cart = require("../models/Cart");
+// Importing the Cart and Product models from the models directoryconst 
+Cart = require("../models/Cart");
 const Product = require("../models/Product");
 
 // GET cart items
